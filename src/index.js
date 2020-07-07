@@ -1,6 +1,7 @@
 // importando dependencias
 const Express = require("express");
 const { connect } = require("mongoose");
+
 // llamando al
 const { agenda } = require("./schema.js");
 const FakeData = require("./fakeData.json");
@@ -22,6 +23,7 @@ const OPTIONS = {
 
 // Router para crear datos de manera aleatoria
 Server.use("/random", (request, response) => {
+    const { protocol, hostname } = request;
     // Se consiguen los nodos del archivo FakeData
     const { names, lastNames } = FakeData;
     // Consiguiendo un index de manera aleatoria
@@ -33,14 +35,14 @@ Server.use("/random", (request, response) => {
         lastName: lastNames[LAST_NAME],
         age: NAME * 2,
         random: NAME * LAST_NAME
+        domain: `${protocol}://${hostname}/`,
     };
 
     // Se indica que se crea un nuevo registro
-    const AGEMDA = new agenda(DATA);
-
+    c
     // Se recibe la respuesta generada al crear un nuevo registro.
     AGEMDA.save((error, data) => {
-        // En caso de error mostramos el problema
+        // En caso de error mostramos el problem
         if (error) {
             response.status(404);
             response.json(error);

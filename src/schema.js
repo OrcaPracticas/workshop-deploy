@@ -7,6 +7,7 @@ const SCHEMA = new Schema({
     lastName: String,
     age: Number,
     random: Number,
+    domain: { type: String, default: "unknow" }
 });
 
 // exportamon el schema generado
