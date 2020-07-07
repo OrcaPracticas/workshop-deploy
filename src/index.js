@@ -39,9 +39,9 @@ Server.use("/random", (request, response) => {
     };
 
     // Se indica que se crea un nuevo registro
-    c
+    const AGENDA = new agenda(DATA);
     // Se recibe la respuesta generada al crear un nuevo registro.
-    AGEMDA.save((error, data) => {
+    AGENDA.save((error, data) => {
         // En caso de error mostramos el problem
         if (error) {
             response.status(404);
