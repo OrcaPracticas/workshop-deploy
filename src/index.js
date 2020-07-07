@@ -1,6 +1,7 @@
 // importando dependencias
 const Express = require("express");
-const { connect } = require("mongoose");
+const { connect } = require("mongoose")
+const Path = require("path");
 
 // llamando al
 const { agenda } = require("./schema.js");
@@ -12,7 +13,9 @@ const Server = Express();
 const USER = process.env.DB_USER;
 const PASSWORD = process.env.DB_PASSWORD;
 const DATA_BASE = "workshop";
+const ENVIROMENT = process.env.ENV || "localhost";
 const APP_PORT = process.env.PORT || 3000;
+const ROOT_PATH = Path.join(__dirname, "../");
 
 // Preparando cadena de conexion
 const CONECTOR = `mongodb+srv://${USER}:${PASSWORD}@mycluster.hdgiq.gcp.mongodb.net/${DATA_BASE}?retryWrites=true&w=majority`;
@@ -20,6 +23,12 @@ const OPTIONS = {
     useNewUrlParser: true,
     useUnifiedTopology: true
 };
+
+Server.use(
+    "/",
+    Express.static(`${ROOT_PATH}/public/`),
+);
+
 
 // Router para crear datos de manera aleatoria
 Server.use("/random", (request, response) => {
@@ -35,7 +44,7 @@ Server.use("/random", (request, response) => {
         lastName: lastNames[LAST_NAME],
         age: NAME * 2,
         random: NAME * LAST_NAME,
-        domain: `${protocol}://${hostname}/`,
+        enviroment: ENVIROMENT,
     };
 
     // Se indica que se crea un nuevo registro
