@@ -34,7 +34,7 @@ Server.use("/random", (request, response) => {
         name: names[NAME],
         lastName: lastNames[LAST_NAME],
         age: NAME * 2,
-        random: NAME * LAST_NAME
+        random: NAME * LAST_NAME,
         domain: `${protocol}://${hostname}/`,
     };
 
