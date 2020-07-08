@@ -1,0 +1,24 @@
+{
+  "name": "workshop-deploy",
+  "version": "1.0.0",
+  "description": "Ejemplo de como hacer deploy en varios servicios online",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon ./",
+    "start": "node ./"
+  },
+  "dependencies": {
+    "express": "4.17.1",
+    "mongoose": "5.9.20"
+  },
+  "devDependencies": {
+    "nodemon": "1.18.4"
+  },
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git@GitHub:OrcaPracticas/workshop-deploy.git"
+  },
+  "author": "Jorge Mendez Ortega <jorge.mendez.ortega@gmail.com>",
+  "license": "MIT"
+}
